@@ -1,0 +1,9 @@
+{
+  "name": "FrizzQOL_GameClock",
+  "version_number": "0.1.0",
+  "website_url": "",
+  "description": "HUD clock with 12-hour or 24-hour time, day, weather, wind, and world status.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2202"
+  ]
+}
