@@ -24,6 +24,10 @@ Shows the in-game time on the HUD, using the game's font. The default spot is un
 
 The clock is local. Each player installs it and can use their own settings. A dedicated server does not need it.
 
+## Source
+
+https://github.com/frizzlebeard/FrizzQOL.GameClock
+
 ## Install
 
 Install with r2modman or the Thunderstore Mod Manager.
