@@ -166,6 +166,29 @@ public class ClockTextTests
             ClockText.Format(snapshot, ClockOptions.AllOn(false)));
     }
 
+    [Theory]
+    [InlineData(false, true, "TopRight", true)]
+    [InlineData(false, true, "TopLeft", true)]
+    [InlineData(false, true, "TopCenter", true)]
+    [InlineData(true, false, "TopRight", false)]
+    [InlineData(true, true, "TopLeft", false)]
+    [InlineData(true, true, "TopCenter", false)]
+    [InlineData(false, false, "TopRight", false)]
+    [InlineData(false, false, "TopLeft", true)]
+    [InlineData(false, false, "TopCenter", true)]
+    [InlineData(false, false, "Middle", false)]
+    public void Clock_hides_on_the_big_map_and_with_a_missing_minimap(bool mapOpen, bool smallMapActive, string corner, bool shown)
+    {
+        Assert.Equal(shown, ClockText.ShouldShow(mapOpen, smallMapActive, corner));
+    }
+
+    [Fact]
+    public void Label_sits_two_pixels_under_the_map()
+    {
+        Assert.Equal(-226f, ClockText.LabelTop(-224f, 0f));
+        Assert.Equal(-216f, ClockText.LabelTop(-224f, 10f));
+    }
+
     private static ClockSnapshot Sample(float fraction)
     {
         return new ClockSnapshot

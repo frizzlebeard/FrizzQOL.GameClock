@@ -60,8 +60,8 @@ namespace GameClock
             text.fontStyle = source.fontStyle;
             text.color = source.color;
             text.raycastTarget = false;
-            text.textWrappingMode = TextWrappingModes.NoWrap;
-            text.overflowMode = TextOverflowModes.Overflow;
+            text.textWrappingMode = TextWrappingModes.Normal;
+            text.overflowMode = TextOverflowModes.Ellipsis;
             text.alignment = TextAlignmentOptions.Top;
             text.lineSpacing = 0f;
             text.text = "";
@@ -115,7 +115,23 @@ namespace GameClock
                 return false;
             }
 
-            return ClockText.IsTimeReady(EnvMan.instance.GetDayFraction());
+            if (!ClockText.IsTimeReady(EnvMan.instance.GetDayFraction()))
+            {
+                return false;
+            }
+
+            return ClockText.ShouldShow(MapIsOpen(), SmallMapActive(), Plugin.Corner.Value);
+        }
+
+        private static bool MapIsOpen()
+        {
+            return Minimap.instance != null && Minimap.IsOpen();
+        }
+
+        private static bool SmallMapActive()
+        {
+            Minimap map = Minimap.instance;
+            return map != null && map.m_smallRoot != null && map.m_smallRoot.activeInHierarchy;
         }
 
         private string BuildText()
@@ -201,7 +217,8 @@ namespace GameClock
             float width = Mathf.Max(40f, _text.rectTransform.sizeDelta.x);
             float cap = _sourceFontSize > 0f ? _sourceFontSize : 18f;
             _text.fontSize = Mathf.Clamp(width / 12f, 12f, cap);
-            _text.textWrappingMode = TextWrappingModes.NoWrap;
+            _text.textWrappingMode = TextWrappingModes.Normal;
+            _text.overflowMode = TextOverflowModes.Ellipsis;
             for (int pass = 0; pass < 2; pass++)
             {
                 _text.ForceMeshUpdate();
@@ -227,15 +244,8 @@ namespace GameClock
                 return;
             }
 
-            _text.ForceMeshUpdate();
-            float glyphTop = 0f;
-            if (_text.textInfo != null && _text.textInfo.lineCount > 0)
-            {
-                glyphTop = _text.textInfo.lineInfo[0].ascender;
-            }
-
             Vector2 pos = _text.rectTransform.anchoredPosition;
-            pos.y = _mapPoint.y - 2f - glyphTop + Plugin.OffsetY.Value;
+            pos.y = ClockText.LabelTop(_mapPoint.y, Plugin.OffsetY.Value);
             _text.rectTransform.anchoredPosition = pos;
         }
 

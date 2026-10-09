@@ -9,7 +9,7 @@ namespace GameClock
     {
         public const string PluginGuid = "com.frizzqol.gameclock";
         public const string PluginName = "FrizzQOL Game Clock";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.1.1";
 
         internal static Plugin Instance { get; private set; }
 

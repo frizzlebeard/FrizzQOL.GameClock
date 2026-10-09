@@ -1,6 +1,6 @@
 {
   "name": "FrizzQOL_Game_Clock",
-  "version_number": "0.1.0",
+  "version_number": "0.1.1",
   "website_url": "https://github.com/frizzlebeard/FrizzQOL.GameClock",
   "description": "HUD clock with 12-hour or 24-hour time, day, weather, wind, and world status.",
   "dependencies": [

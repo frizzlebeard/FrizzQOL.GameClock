@@ -75,6 +75,26 @@ namespace GameClock
             return !float.IsNaN(dayFraction) && !float.IsInfinity(dayFraction);
         }
 
+        public static bool ShouldShow(bool mapOpen, bool smallMapActive, string corner)
+        {
+            if (mapOpen)
+            {
+                return false;
+            }
+
+            if (NormalizeCorner(corner) == "TopRight" && !smallMapActive)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static float LabelTop(float mapBottom, float offsetY)
+        {
+            return mapBottom - 2f + offsetY;
+        }
+
         public static string Format(ClockSnapshot snapshot, ClockOptions options)
         {
             List<string> when = new List<string>();

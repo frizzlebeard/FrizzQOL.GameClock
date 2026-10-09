@@ -1,6 +1,16 @@
 # FrizzQOL Game Clock
 
-Shows the in-game time on the HUD, using the game's font. The default spot is under the small minimap.
+https://github.com/frizzlebeard/FrizzQOL.GameClock
+
+> The in-game time on your HUD, in the game's own font. 🕐
+
+---
+
+## What it does
+
+A small clock sits under the minimap. It can also show the day, the weather name, the wind, and whether the world is cold, wet, or freezing. It hides while the big map is open. In the top-right spot it also hides when the small minimap is hidden. Long lines stay inside the minimap width.
+
+The clock is yours alone. It does not change the world for anyone else.
 
 ## Config
 
@@ -22,7 +32,7 @@ Shows the in-game time on the HUD, using the game's font. The default spot is un
 
 ## Multiplayer
 
-The clock is local. Each player installs it and can use their own settings. A dedicated server does not need it.
+Each player installs it and can use their own settings. A dedicated server does not need it.
 
 ## Install
 
@@ -34,6 +44,12 @@ To install by hand, copy `FrizzQOL.GameClock.dll` into `BepInEx/plugins`.
 
 - Valheim
 - [BepInExPack for Valheim](https://thunderstore.io/c/valheim/p/denikson/BepInExPack_Valheim/)
+
+## Support
+
+☕ If you enjoy my work, please buy me a coffee.
+
+Cash App: `$FrizzleFry4`
 
 ## License
 
@@ -52,7 +68,3 @@ dotnet build GameClock.sln -c Release
 The plugin file is `FrizzQOL.GameClock.dll`, under the project `bin\Release\net48` folder.
 
 `Environment.props` stays on your machine. It is listed in `.gitignore`.
-
-## Source
-
-https://github.com/frizzlebeard/FrizzQOL.GameClock
